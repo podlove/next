@@ -26,6 +26,27 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <main role="main">
+
+        <ul>
+          <%= if @current_user do %>
+            <li class="nav-item">
+              <span class="navbar-text">
+                <%= @current_user.email %>
+              </span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>              
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          <% end %>
+        </ul>
+
         <%= render @view_module, @view_template, assigns %>
       </main>
 

@@ -6,22 +6,29 @@
 use Mix.Config
 
 # General application configuration
-config :next,
-  ecto_repos: [Next.Repo]
+config :next, ecto_repos: [Next.Repo]
 
 # Configures the endpoint
 config :next, NextWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "MFObBuiH3Z4oOh7NjkSvBHzRJS4KGGpgMlXjAJDiwkuK1wWZYKx+lrxerXwqBvk1",
   render_errors: [view: NextWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Next.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Next.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+config :next, Next.Guardian,
+  issuer: "next",
+  secret_key: "uueUb+ZMNkW3Ijy+BhkOnu4M4SKM9FbbAPTcN8Jx5bR4Sl3+tXnb8mc6p9zYH9oN",
+  token_module: Guardian.Token.Jwt
+
+config :next, Next.AuthAccessPipeline,
+  module: Next.Guardian,
+  error_handler: Next.AuthErrorHandler
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
