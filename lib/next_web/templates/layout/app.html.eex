@@ -8,45 +8,46 @@
     <meta name="author" content="">
 
     <title>Hello Next!</title>
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+
+    <nav class="navbar" role="navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="<%= static_path(@conn, "/images/podlove-icon.png") %>" alt="Podlove NG" width="19" height="30">
+          <h1>Podlove NG</h1>
+        </a>
+        <div class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+  
+      <div class="navbar-menu" id="navMenu">
+        <%= if @current_user do %>
+          <a class="navbar-item">
+            <%= @current_user.email %>
+          </a>
+          <a class="navbar-item" href="/logout">Logout</a>
+        <% else %>
+          <a class="navbar-item" href="/register">Register</a>
+          <a class="navbar-item" href="/login">Login</a>
+        <% end %>
+      </div>
+    </nav>
+
+
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <main role="main">
-
-        <ul>
-          <%= if @current_user do %>
-            <li class="nav-item">
-              <span class="navbar-text">
-                <%= @current_user.email %>
-              </span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>              
-          <% else %>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-          <% end %>
-        </ul>
-
         <%= render @view_module, @view_template, assigns %>
       </main>
 

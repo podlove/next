@@ -3,11 +3,12 @@ defmodule Next.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :email, :text
-      add :password, :string
+      add(:email, :text)
+      add(:password, :string)
 
       timestamps()
     end
 
+    create(unique_index(:users, [:email]))
   end
 end
