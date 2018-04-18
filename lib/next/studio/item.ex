@@ -2,12 +2,15 @@ defmodule Next.Studio.Item do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Next.Studio.Show
+
   schema "items" do
     field(:description, :string)
     field(:title, :string)
     field(:url, :string)
     field(:url_meta, :map)
-    field(:show_id, :id)
+
+    belongs_to(:show, Show)
 
     timestamps()
   end

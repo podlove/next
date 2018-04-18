@@ -1,13 +1,13 @@
 defmodule Next.Studio.Channel do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Next.Studio.Network
+  alias Next.Studio.{Network, Show}
 
   schema "channels" do
     field(:name, :string)
-    # field(:network_id, :id)
 
     belongs_to(:network, Network)
+    has_many(:shows, Show)
 
     timestamps()
   end

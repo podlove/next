@@ -1,7 +1,7 @@
 defmodule Next.Studio.Show do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Next.Studio.Channel
+  alias Next.Studio.{Channel, Item}
 
   schema "shows" do
     field(:description, :string)
@@ -9,9 +9,9 @@ defmodule Next.Studio.Show do
     field(:name, :string)
     field(:recording_date, :utc_datetime)
     field(:subtitle, :string)
-    # field :channel_id, :id
 
     belongs_to(:channel, Channel)
+    has_many(:items, Item)
 
     timestamps()
   end
