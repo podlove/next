@@ -10,7 +10,10 @@ defmodule Next.Mixfile do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      docs: [
+        main: "Next"
+      ]
     ]
   end
 
@@ -43,7 +46,8 @@ defmodule Next.Mixfile do
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:argon2_elixir, "~> 1.2"},
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+      {:ex_doc, "~> 0.18", only: :dev, runtime: false}
     ]
   end
 

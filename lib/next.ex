@@ -1,9 +1,15 @@
 defmodule Next do
   @moduledoc """
-  Next keeps the contexts that define your domain
-  and business logic.
+  A playground for the Podlove NG Core.
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
+  ## Current Functionality
+
+  - Basic Register/Login
+  - Basic Ecto Schemas
+
+  ## Schemas
+
+  The top level entity is `Next.Studio.Network`. A network contains one or many `Next.Studio.Channel` (podcasts).
+  Each channel contains `Next.Studio.Show` (episodes), which contain many `Next.Studio.Item`.
   """
 end
