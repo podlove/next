@@ -18,7 +18,7 @@
 
     <nav class="navbar" role="navigation">
       <div class="navbar-brand">
-        <a class="navbar-item">
+        <a href="/" class="navbar-item">
           <img src="<%= static_path(@conn, "/images/podlove-icon.png") %>" alt="Podlove NG" width="19" height="30">
           <h1>Podlove NG</h1>
         </a>
