@@ -11,3 +11,9 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
   * Build docs with `mix docs` and view them with `open docs/index.html`
 
+## Mix Tasks
+
+```
+mix next.reset          # Empties database and seeds project with data for easier development
+mix next.seed           # Seeds project with data for easier development
+```
